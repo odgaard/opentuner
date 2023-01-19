@@ -5,7 +5,6 @@ import logging
 from builtins import map
 
 from future.utils import with_metaclass
-from past.builtins import cmp
 from past.utils import old_div
 from sqlalchemy import text
 
@@ -154,6 +153,9 @@ def _project(a1, a2, factor):
         return None
     return a2 + factor * (a2 - a1)
 
+
+def cmp(x, y):
+    return (x > y) ^ (x < y)
 
 class MinimizeTime(SearchObjective):
     """
